@@ -96,7 +96,7 @@
  */
 
 static NM_INLINE NM_FLOAT *matnm_new(NM_SIZE n, NM_SIZE m){
-    return NM_MALLOC(sizeof(NM_FLOAT) * n * m);
+    return (NM_FLOAT *)NM_MALLOC(sizeof(NM_FLOAT) * n * m);
 }
 
 static NM_INLINE NM_FLOAT *matnm_zero(NM_FLOAT *dst, NM_SIZE n, NM_SIZE m){
@@ -256,7 +256,7 @@ static NM_INLINE NM_FLOAT *matnm_multt(NM_FLOAT *dst, const NM_FLOAT *src1, cons
  */
 
 static NM_INLINE NM_FLOAT *vecn_new(NM_SIZE n){
-    return NM_MALLOC(sizeof(NM_FLOAT) * n);
+    return (NM_FLOAT *)NM_MALLOC(sizeof(NM_FLOAT) * n);
 }
 
 static NM_INLINE NM_FLOAT *vecn_zero(NM_FLOAT *dst, NM_SIZE n){
@@ -346,7 +346,7 @@ static NM_INLINE NM_FLOAT *vecn_floor(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZ
  */
 
 static NM_INLINE NM_FLOAT *matn_new(NM_SIZE n, NM_SIZE m){
-    return NM_MALLOC(sizeof(NM_FLOAT) * n * m);
+    return (NM_FLOAT *)NM_MALLOC(sizeof(NM_FLOAT) * n * m);
 }
 
 static NM_INLINE NM_FLOAT *matn_one(NM_FLOAT *dst, NM_SIZE n){
