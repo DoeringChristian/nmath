@@ -41,6 +41,11 @@
 #define NM_MALLOC(_size) malloc(_size)
 #endif //NM_MALLOC
 
+#ifndef NM_FREE
+#include <stdlib.h>
+#define NM_FREE(_p) free(_p)
+#endif //NM_FREE
+
 #ifndef NM_SQRT
 #include <math.h>
 #define NM_SQRT(_x) sqrtf(_x)
@@ -97,6 +102,17 @@
 
 static NM_INLINE NM_FLOAT *matnm_new(NM_SIZE n, NM_SIZE m){
     return (NM_FLOAT *)NM_MALLOC(sizeof(NM_FLOAT) * n * m);
+}
+
+static NM_INLINE void matnm_free(NM_FLOAT *dst){
+    NM_FREE(dst);
+}
+
+static NM_INLINE NM_FLOAT *matnm_foreach_cb(NM_FLOAT *dst, const NM_FLOAT *src, void *data, NM_FLOAT (*cb)(NM_FLOAT src, void *data), NM_SIZE n, NM_SIZE m){
+    NM_SIZE i;
+    for(i = 0;i < n * m;i++)
+        dst[i] = cb(src[i], data);
+    return dst;
 }
 
 static NM_INLINE NM_FLOAT *matnm_zero(NM_FLOAT *dst, NM_SIZE n, NM_SIZE m){
@@ -259,6 +275,14 @@ static NM_INLINE NM_FLOAT *vecn_new(NM_SIZE n){
     return (NM_FLOAT *)NM_MALLOC(sizeof(NM_FLOAT) * n);
 }
 
+static NM_INLINE void vecn_free(NM_FLOAT *dst){
+    NM_FREE(dst);
+}
+
+static NM_INLINE NM_FLOAT *vecn_foreach_cb(NM_FLOAT *dst, const NM_FLOAT *src, void *data, NM_FLOAT (*cb)(NM_FLOAT src, void *data), NM_SIZE n){
+    return matnm_foreach_cb(dst, src, data, cb, n, 1);
+}
+
 static NM_INLINE NM_FLOAT *vecn_zero(NM_FLOAT *dst, NM_SIZE n){
     return matnm_zero(dst, n, 1);
 }
@@ -347,6 +371,14 @@ static NM_INLINE NM_FLOAT *vecn_floor(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZ
 
 static NM_INLINE NM_FLOAT *matn_new(NM_SIZE n, NM_SIZE m){
     return (NM_FLOAT *)NM_MALLOC(sizeof(NM_FLOAT) * n * m);
+}
+
+static NM_INLINE void matn_free(NM_FLOAT *dst){
+    NM_FREE(dst);
+}
+
+static NM_INLINE NM_FLOAT *matn_foreach_cb(NM_FLOAT *dst, const NM_FLOAT *src, void *data, NM_FLOAT (*cb)(NM_FLOAT src, void *data), NM_SIZE n, NM_SIZE m){
+    return matnm_foreach_cb(dst, src, data, cb, n, n);
 }
 
 static NM_INLINE NM_FLOAT *matn_one(NM_FLOAT *dst, NM_SIZE n){
