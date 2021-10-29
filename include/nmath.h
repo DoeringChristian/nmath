@@ -1,3 +1,25 @@
+/* MIT License
+ * 
+ * Copyright (c) 2021 DoeringChristian
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 #ifndef NMATH_H
 #define NMATH_H
 
@@ -122,6 +144,13 @@ static NM_INLINE NM_FLOAT matnm_gett(const NM_FLOAT *src, NM_SIZE col, NM_SIZE r
     return src[row + col * m];
 }
 
+static NM_INLINE NM_FLOAT *matnm_neg(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZE n, NM_SIZE m){
+    NM_SIZE i;
+    for(i = 0;i < n * m;i++)
+        dst[i] = -src[i];
+    return dst;
+}
+
 static NM_INLINE NM_FLOAT *matnm_t(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZE n, NM_SIZE m){
     NM_SIZE i, j;
     for(j = 0;j < m;j++){
@@ -222,6 +251,8 @@ static NM_INLINE NM_FLOAT *matnm_multt(NM_FLOAT *dst, const NM_FLOAT *src1, cons
  * =======================
  * Vector N x 1 or 1 X N :
  * =======================
+ *
+ * Vectors are column and row matrices in one since matrices are stored in row major order.
  */
 
 static NM_INLINE NM_FLOAT *vecn_new(NM_SIZE n){
@@ -229,10 +260,7 @@ static NM_INLINE NM_FLOAT *vecn_new(NM_SIZE n){
 }
 
 static NM_INLINE NM_FLOAT *vecn_zero(NM_FLOAT *dst, NM_SIZE n){
-    NM_SIZE i;
-    for(i = 0;i < n;i++)
-        dst[i] = 0.0;
-    return dst;
+    return matnm_zero(dst, n, 1);
 }
 
 static NM_INLINE NM_FLOAT *vecn_one(NM_FLOAT *dst, NM_SIZE n){
@@ -243,39 +271,25 @@ static NM_INLINE NM_FLOAT *vecn_one(NM_FLOAT *dst, NM_SIZE n){
 }
 
 static NM_INLINE NM_FLOAT *vecn_add(NM_FLOAT *dst, const NM_FLOAT *src1, const NM_FLOAT *src2, NM_SIZE n){
-    NM_SIZE i;
-    for(i = 0;i < n;i++)
-        dst[i] = src1[i] + src2[i];
-    return dst;
+    return matnm_add(dst, src1, src2, n, 1);
 }
 
 static NM_INLINE NM_FLOAT *vecn_sub(NM_FLOAT *dst, const NM_FLOAT *src1, const NM_FLOAT *src2, NM_SIZE n){
-    NM_SIZE i;
-    for(i = 0;i < n;i++)
-        dst[i] = src1[i] - src2[i];
-    return dst;
+    return matnm_sub(dst, src1, src2, n, 1);
 }
 
 static NM_INLINE NM_FLOAT vecn_dot(const NM_FLOAT *src1, const NM_FLOAT *src2, NM_SIZE n){
-    NM_SIZE i;
-    NM_FLOAT dst = 0.0;
-    for(i = 0;i < n;i++)
-        dst += src1[i] * src2[i];
+    NM_FLOAT dst;
+    matnm_mult(&dst, src1, src2, n, 1, 1);
     return dst;
 }
 
 static NM_INLINE NM_FLOAT *vecn_scale(NM_FLOAT *dst, const NM_FLOAT *src, const NM_FLOAT s, NM_SIZE n){
-    NM_SIZE i;
-    for(i = 0;i < n;i++)
-        dst[i] = src[i] * s;
-    return dst;
+    return matnm_scale(dst, src, s, n, 1);
 }
 
 static NM_INLINE NM_FLOAT *vecn_neg(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZE n){
-    NM_SIZE i;
-    for(i = 0;i < n;i++)
-        dst[i] = -src[i];
-    return dst;
+    return matnm_neg(dst, src, n, 1);
 }
 
 static NM_INLINE NM_FLOAT vecn_len(const NM_FLOAT *src, NM_SIZE n){
