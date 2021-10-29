@@ -117,12 +117,15 @@ int main(){
 
     printf("\n\n");
 
+    float mat6[3 * 4];
+    matnm_t(mat6, mat1, 4, 3);
+
     matnm_print(mat4, 3, 4);
     printf("*\nt(\n");
-    matnm_print(mat2, 3, 4);
+    matnm_print(mat6, 3, 4);
     printf(") = \n");
 
-    matnm_multt(mat5, mat4, mat2, 3, 4, 4);
+    matnm_multt(mat5, mat4, mat6, 3, 4, 4);
     matnm_print(mat5, 4, 4);
 
 
