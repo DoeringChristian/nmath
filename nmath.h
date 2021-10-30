@@ -437,12 +437,28 @@ static NM_INLINE NM_FLOAT *vecn_neg(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZE 
     return matnm_neg(dst, src, n, 1);
 }
 
-static NM_INLINE NM_FLOAT vecn_len(const NM_FLOAT *src, NM_SIZE n){
+static NM_INLINE NM_FLOAT vecn_len_squared(const NM_FLOAT *src, NM_SIZE n){
     NM_SIZE i;
     NM_FLOAT dst;
     for(i = 0;i < n;i++)
         dst += src[i] * src[i];
-    return NM_SQRT(dst);
+    return dst;
+}
+
+static NM_INLINE NM_FLOAT vecn_len(const NM_FLOAT *src, NM_SIZE n){
+    return NM_SQRT(vecn_len_squared(src, n));
+}
+
+static NM_INLINE NM_FLOAT vecn_dist_squared(const NM_FLOAT *src1, const NM_FLOAT *src2, NM_SIZE n){
+    NM_SIZE i;
+    NM_FLOAT dst;
+    for(i = 0;i < n;i++)
+        dst += (src1[i] - src2[i]) * (src1[i] - src2[i]);
+    return dst;
+}
+
+static NM_INLINE NM_FLOAT vecn_dist(const NM_FLOAT *src1, const NM_FLOAT *src2, NM_SIZE n){
+    return NM_SQRT(vecn_dist_squared(src1, src2, n));
 }
 
 static NM_INLINE NM_FLOAT *vecn_normalize(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZE n){
