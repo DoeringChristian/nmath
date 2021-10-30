@@ -147,8 +147,6 @@ int main(){
     matnm_multt(vec4, mat2, vec3, 3, 4, 1);
     printf("=\n");
     vecn_print(vec4, 4);
-
-
     
 
 

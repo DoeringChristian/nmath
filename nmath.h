@@ -178,7 +178,7 @@ static NM_INLINE NM_FLOAT *matnm_neg(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZE
     return dst;
 }
 
-static NM_INLINE NM_FLOAT *matnm_t(NM_FLOAT *dst, const NM_FLOAT *src, NM_SIZE n, NM_SIZE m){
+static NM_INLINE NM_FLOAT *matnm_t(NM_FLOAT * restrict dst, const NM_FLOAT *restrict src, NM_SIZE n, NM_SIZE m){
     NM_SIZE i, j;
     for(j = 0;j < m;j++){
         for(i = 0;i < n;i++){
@@ -238,7 +238,7 @@ static NM_INLINE NM_SIZE matnm_mult_able(NM_SIZE n1, NM_SIZE m1, NM_SIZE n2, NM_
     return (n1 == m2);
 }
 
-static NM_INLINE NM_FLOAT *matnm_mult(NM_FLOAT *dst, const NM_FLOAT *src1, const NM_FLOAT *src2, NM_SIZE n1, NM_SIZE m1, NM_SIZE n2){
+static NM_INLINE NM_FLOAT *matnm_mult(NM_FLOAT *restrict dst, const NM_FLOAT *restrict src1, const NM_FLOAT *restrict src2, NM_SIZE n1, NM_SIZE m1, NM_SIZE n2){
     NM_SIZE i, j, k;
     for(i = 0;i < n2;i++){
         for(j = 0;j < m1;j++){
@@ -262,7 +262,7 @@ static NM_INLINE NM_SIZE matnm_multt_able(NM_SIZE n1, NM_SIZE m1, NM_SIZE n2, NM
     return (n1 == n2);
 }
 
-static NM_INLINE NM_FLOAT *matnm_multt(NM_FLOAT *dst, const NM_FLOAT *src1, const NM_FLOAT *src2_t, NM_SIZE n1, NM_SIZE m1, NM_SIZE m2){
+static NM_INLINE NM_FLOAT *matnm_multt(NM_FLOAT *restrict dst, const NM_FLOAT *restrict src1, const NM_FLOAT *restrict src2_t, NM_SIZE n1, NM_SIZE m1, NM_SIZE m2){
     NM_SIZE i, j, k;
     for(i = 0;i < m2;i++){
         for(j = 0;j < m1;j++){
@@ -274,7 +274,7 @@ static NM_INLINE NM_FLOAT *matnm_multt(NM_FLOAT *dst, const NM_FLOAT *src1, cons
     return dst;
 }
 
-static NM_INLINE NM_FLOAT *matnm_mult_at(NM_FLOAT *dst, const NM_FLOAT *src1, NM_FLOAT *src2, NM_SIZE n1, NM_SIZE m1, NM_SIZE n2, NM_SIZE m2, NM_INT x, NM_INT y){
+static NM_INLINE NM_FLOAT *matnm_mult_at(NM_FLOAT *restrict dst, const NM_FLOAT *restrict src1, const NM_FLOAT *restrict src2, NM_SIZE n1, NM_SIZE m1, NM_SIZE n2, NM_SIZE m2, NM_INT x, NM_INT y){
     NM_SIZE i, j;
     for(i = 0;i < n2;i++){
         for(j = 0;j < m2;j++){
@@ -284,7 +284,7 @@ static NM_INLINE NM_FLOAT *matnm_mult_at(NM_FLOAT *dst, const NM_FLOAT *src1, NM
     return dst;
 }
 
-static NM_INLINE NM_FLOAT matnm_conv_at(const NM_FLOAT *src1, NM_FLOAT *src2, NM_SIZE n1, NM_SIZE m1, NM_SIZE n2, NM_SIZE m2, NM_INT x, NM_INT y){
+static NM_INLINE NM_FLOAT matnm_conv_at(const NM_FLOAT *src1, const NM_FLOAT *src2, NM_SIZE n1, NM_SIZE m1, NM_SIZE n2, NM_SIZE m2, NM_INT x, NM_INT y){
     NM_SIZE i, j;
     NM_FLOAT dst = 0.0;
     for(i = 0;i < n2;i++){
@@ -368,15 +368,15 @@ static NM_INLINE NM_FLOAT *matn_scale(NM_FLOAT *dst, const NM_FLOAT *src, NM_FLO
     return matnm_scale(dst, src, s, n, n);
 }
 
-static NM_INLINE NM_FLOAT *matn_mult(NM_FLOAT *dst, const NM_FLOAT *src1, const NM_FLOAT *src2, NM_SIZE n){
+static NM_INLINE NM_FLOAT *matn_mult(NM_FLOAT *restrict dst, const NM_FLOAT *restrict src1, const NM_FLOAT *restrict src2, NM_SIZE n){
     return matnm_mult(dst, src1, src2, n, n, n);
 }
 
-static NM_INLINE NM_FLOAT *matn_multt(NM_FLOAT *dst, const NM_FLOAT *src1, const NM_FLOAT *src2_t, NM_SIZE n){
+static NM_INLINE NM_FLOAT *matn_multt(NM_FLOAT *restrict dst, const NM_FLOAT *restrict src1, const NM_FLOAT *restrict src2_t, NM_SIZE n){
     return matnm_multt(dst, src1, src2_t, n, n, n);
 }
 
-static NM_INLINE NM_FLOAT *matn_mult_vecn(NM_FLOAT *dst_v, const NM_FLOAT *src1_m, const NM_FLOAT *src2_v, NM_SIZE n){
+static NM_INLINE NM_FLOAT *matn_mult_vecn(NM_FLOAT *restrict dst_v, const NM_FLOAT *restrict src1_m, const NM_FLOAT *restrict src2_v, NM_SIZE n){
     return matnm_mult(dst_v, src1_m, src2_v, n, n, 1);
 }
 
