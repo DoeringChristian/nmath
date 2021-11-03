@@ -1,4 +1,4 @@
-# Install script for directory: /home/doeringc/Projects/nmath
+# Install script for directory: /home/doeringc/share/Projects/nmath
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/doeringc/Projects/nmath/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/doeringc/share/Projects/nmath/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

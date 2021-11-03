@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/doeringc/Projects/nmath/include
+C_INCLUDES = -I/home/doeringc/share/Projects/nmath/.
 
 C_FLAGS = -g -std=gnu11
 

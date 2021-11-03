@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/nmath.dir/src/main.c.o -o nmath  -lm 
+/usr/bin/cc -g CMakeFiles/nmath.dir/main.c.o -o nmath  -lm 

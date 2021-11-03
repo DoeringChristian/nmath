@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/doeringc/Projects/nmath
+CMAKE_SOURCE_DIR = /home/doeringc/share/Projects/nmath
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/doeringc/Projects/nmath/build
+CMAKE_BINARY_DIR = /home/doeringc/share/Projects/nmath/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/doeringc/Projects/nmath/build/CMakeFiles /home/doeringc/Projects/nmath/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/doeringc/share/Projects/nmath/build/CMakeFiles /home/doeringc/share/Projects/nmath/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/doeringc/Projects/nmath/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/doeringc/share/Projects/nmath/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,29 +129,29 @@ nmath/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/build
 .PHONY : nmath/fast
 
-src/main.o: src/main.c.o
-.PHONY : src/main.o
+main.o: main.c.o
+.PHONY : main.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/src/main.c.o
-.PHONY : src/main.c.o
+main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/main.c.o
+.PHONY : main.c.o
 
-src/main.i: src/main.c.i
-.PHONY : src/main.i
+main.i: main.c.i
+.PHONY : main.i
 
 # target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/src/main.c.i
-.PHONY : src/main.c.i
+main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/main.c.i
+.PHONY : main.c.i
 
-src/main.s: src/main.c.s
-.PHONY : src/main.s
+main.s: main.c.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/src/main.c.s
-.PHONY : src/main.c.s
+main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/main.c.s
+.PHONY : main.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... nmath"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

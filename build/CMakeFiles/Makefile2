@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/doeringc/Projects/nmath
+CMAKE_SOURCE_DIR = /home/doeringc/share/Projects/nmath
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/doeringc/Projects/nmath/build
+CMAKE_BINARY_DIR = /home/doeringc/share/Projects/nmath/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/nmath.dir/clean
 CMakeFiles/nmath.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nmath.dir/build.make CMakeFiles/nmath.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/doeringc/Projects/nmath/build/CMakeFiles --progress-num=1,2 "Built target nmath"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/doeringc/share/Projects/nmath/build/CMakeFiles --progress-num=1,2 "Built target nmath"
 .PHONY : CMakeFiles/nmath.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/nmath.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/doeringc/Projects/nmath/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/doeringc/share/Projects/nmath/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/nmath.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/doeringc/Projects/nmath/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/doeringc/share/Projects/nmath/build/CMakeFiles 0
 .PHONY : CMakeFiles/nmath.dir/rule
 
 # Convenience name for target.

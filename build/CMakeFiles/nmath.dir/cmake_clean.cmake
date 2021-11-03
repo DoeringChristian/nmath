@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/nmath.dir/src/main.c.o"
-  "CMakeFiles/nmath.dir/src/main.c.o.d"
+  "CMakeFiles/nmath.dir/main.c.o"
+  "CMakeFiles/nmath.dir/main.c.o.d"
   "nmath"
   "nmath.pdb"
 )

@@ -1,7 +1,7 @@
 [
 {
-  "directory": "/home/doeringc/Projects/nmath/build",
-  "command": "/usr/bin/cc  -I/home/doeringc/Projects/nmath/include -g -std=gnu11 -o CMakeFiles/nmath.dir/src/main.c.o -c /home/doeringc/Projects/nmath/src/main.c",
-  "file": "/home/doeringc/Projects/nmath/src/main.c"
+  "directory": "/home/doeringc/share/Projects/nmath/build",
+  "command": "/usr/bin/cc  -I/home/doeringc/share/Projects/nmath/. -g -std=gnu11 -o CMakeFiles/nmath.dir/main.c.o -c /home/doeringc/share/Projects/nmath/main.c",
+  "file": "/home/doeringc/share/Projects/nmath/main.c"
 }
 ]

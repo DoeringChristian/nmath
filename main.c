@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "nmath.h"
+#include "gamath.h"
 #include <stdio.h>
 
 static inline int matn_print(const float *src, size_t n){
@@ -148,7 +149,26 @@ int main(){
     printf("=\n");
     vecn_print(vec4, 4);
     
+    // geometrict algebra test
+    float vecga3_01[] = {
+        0, 1, 0, 0, 0, 0, 0, 0
+    };
 
+    float vecga3_02[] = {
+        0, 0, 0, 0, 0, 0, 0, 1
+    };
+
+    float vecga3_03[8];
+
+    vecga3_gprod(vecga3_03, vecga3_01, vecga3_02);
+
+    printf("\n\n");
+    printf("1          e1        e2        e3        e12       e13       e23       e123\n");
+    vecn_print(vecga3_01, 8);
+    printf("*\n");
+    vecn_print(vecga3_02, 8);
+    printf("=\n");
+    vecn_print(vecga3_03, 8);
 
 
 

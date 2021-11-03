@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/doeringc/Projects/nmath/src/main.c" "CMakeFiles/nmath.dir/src/main.c.o" "gcc" "CMakeFiles/nmath.dir/src/main.c.o.d"
+  "/home/doeringc/share/Projects/nmath/main.c" "CMakeFiles/nmath.dir/main.c.o" "gcc" "CMakeFiles/nmath.dir/main.c.o.d"
   )
 
 # Targets to which this target links.
