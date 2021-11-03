@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/doeringc/share/Projects/nmath/build",
-  "command": "/usr/bin/cc  -I/home/doeringc/share/Projects/nmath/. -g -std=gnu11 -o CMakeFiles/nmath.dir/main.c.o -c /home/doeringc/share/Projects/nmath/main.c",
-  "file": "/home/doeringc/share/Projects/nmath/main.c"
-}
-]
